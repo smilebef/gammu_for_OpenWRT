@@ -1,0 +1,28 @@
+[smsd]
+Service = FILES
+Driver = native_mysql
+InboxPath = /tmp/Inbox
+OutboxPath = /tmp/Outbox
+SentSMSPath = /tmp/SendSMS
+ErrorSMSPath = /tmp/ErrorSMS
+InboxFormat = detail
+OutboxFormat = detail
+TransmitFormat = auto
+ReceiveFrequency = 1
+CommTimeout = 30
+PIN = 1151
+LogFile = syslog
+User = simyo
+Password = simyo
+debuglevel=255
+PhoneID = first
+
+[gammu]
+port=/dev/ttyUSB0
+connection=at57600
+syncronizetime = no
+model=at
+name=Huawei
+logfile=/var/log/gammu.log
+logformat=textalldate
+use_locking=no

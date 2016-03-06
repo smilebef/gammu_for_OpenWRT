@@ -1,0 +1,32 @@
+#!/bin/sh
+
+
+echo 4 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio4/direction
+echo 0 > /sys/class/gpio/gpio4/value
+
+cd /var/sms/inbox
+
+SMS=`ls`
+
+
+echo $SMS > /tmp/sms.log
+echo "----------------------" >> /tmp/sms.log 
+
+
+for i in $SMS; 
+do
+
+echo $i >> /tmp/sms.log 
+cat $i >> /tmp/sms.log
+rm $i
+
+echo 1 > /sys/class/gpio/gpio4/value
+sleep 3
+echo 0 > /sys/class/gpio/gpio4/value
+
+
+done
+
+
+
